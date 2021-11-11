@@ -30,42 +30,42 @@ func Test_largestTwo(t *testing.T) {
 		})
 	}
 }
-func Benchmark_largestTwo10(t *testing.B) {
+func Benchmark_largestTwo_10(t *testing.B) {
 	slice := ints[0:10]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		largestTwo(slice...)
 	}
 }
-func Benchmark_largestTwo100(t *testing.B) {
+func Benchmark_largestTwo_100(t *testing.B) {
 	slice := ints[0:100]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		largestTwo(slice...)
 	}
 }
-func Benchmark_largestTwo1K(t *testing.B) {
+func Benchmark_largestTwo_1K(t *testing.B) {
 	slice := ints[0:1000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		largestTwo(slice...)
 	}
 }
-func Benchmark_largestTwo10K(t *testing.B) {
+func Benchmark_largestTwo_10K(t *testing.B) {
 	slice := ints[0:10000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		largestTwo(slice...)
 	}
 }
-func Benchmark_largestTwo100K(t *testing.B) {
+func Benchmark_largestTwo_100K(t *testing.B) {
 	slice := ints[0:100000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		largestTwo(slice...)
 	}
 }
-func Benchmark_largestTwo1000K(t *testing.B) {
+func Benchmark_largestTwo_1000K(t *testing.B) {
 	slice := ints[0:1000000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
@@ -98,42 +98,42 @@ func Test_sortingTwo(t *testing.T) {
 		})
 	}
 }
-func Benchmark_sortingTwo10(t *testing.B) {
+func Benchmark_sortingTwo_10(t *testing.B) {
 	slice := ints[0:10]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		sortingTwo(slice...)
 	}
 }
-func Benchmark_sortingTwo100(t *testing.B) {
+func Benchmark_sortingTwo_100(t *testing.B) {
 	slice := ints[0:100]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		sortingTwo(slice...)
 	}
 }
-func Benchmark_sortingTwo1K(t *testing.B) {
+func Benchmark_sortingTwo_1K(t *testing.B) {
 	slice := ints[0:1000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		sortingTwo(slice...)
 	}
 }
-func Benchmark_sortingTwo10K(t *testing.B) {
+func Benchmark_sortingTwo_10K(t *testing.B) {
 	slice := ints[0:10000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		sortingTwo(slice...)
 	}
 }
-func Benchmark_sortingTwo100K(t *testing.B) {
+func Benchmark_sortingTwo_100K(t *testing.B) {
 	slice := ints[0:100000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		sortingTwo(slice...)
 	}
 }
-func Benchmark_sortingTwo1000K(t *testing.B) {
+func Benchmark_sortingTwo_1000K(t *testing.B) {
 	slice := ints[0:1000000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
@@ -166,35 +166,35 @@ func Test_doubleTwo(t *testing.T) {
 		})
 	}
 }
-func Benchmark_doubleTwo10(t *testing.B) {
+func Benchmark_doubleTwo_10(t *testing.B) {
 	slice := ints[0:10]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		doubleTwo(slice...)
 	}
 }
-func Benchmark_doubleTwo100(t *testing.B) {
+func Benchmark_doubleTwo_100(t *testing.B) {
 	slice := ints[0:100]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		doubleTwo(slice...)
 	}
 }
-func Benchmark_doubleTwo1K(t *testing.B) {
+func Benchmark_doubleTwo_1K(t *testing.B) {
 	slice := ints[0:1000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		doubleTwo(slice...)
 	}
 }
-func Benchmark_doubleTwo10K(t *testing.B) {
+func Benchmark_doubleTwo_10K(t *testing.B) {
 	slice := ints[0:10000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		doubleTwo(slice...)
 	}
 }
-func Benchmark_doubleTwo1000K(t *testing.B) {
+func Benchmark_doubleTwo_1000K(t *testing.B) {
 	slice := ints[0:1000000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
@@ -227,42 +227,42 @@ func Test_mutableTwo(t *testing.T) {
 		})
 	}
 }
-func Benchmark_mutableTwo10(t *testing.B) {
+func Benchmark_mutableTwo_10(t *testing.B) {
 	slice := ints[0:10]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		mutableTwo(slice...)
 	}
 }
-func Benchmark_mutableTwo100(t *testing.B) {
+func Benchmark_mutableTwo_100(t *testing.B) {
 	slice := ints[0:100]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		mutableTwo(slice...)
 	}
 }
-func Benchmark_mutableTwo1K(t *testing.B) {
+func Benchmark_mutableTwo_1K(t *testing.B) {
 	slice := ints[0:1000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		mutableTwo(slice...)
 	}
 }
-func Benchmark_mutableTwo10K(t *testing.B) {
+func Benchmark_mutableTwo_10K(t *testing.B) {
 	slice := ints[0:10000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		mutableTwo(slice...)
 	}
 }
-func Benchmark_mutableTwo100K(t *testing.B) {
+func Benchmark_mutableTwo_100K(t *testing.B) {
 	slice := ints[0:100000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		mutableTwo(slice...)
 	}
 }
-func Benchmark_mutableTwo1000K(t *testing.B) {
+func Benchmark_mutableTwo_1000K(t *testing.B) {
 	slice := ints[0:1000000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
@@ -295,42 +295,42 @@ func Test_tournamentTwo(t *testing.T) {
 		})
 	}
 }
-func Benchmark_tournamentTwo10(t *testing.B) {
+func Benchmark_tournamentTwo_10(t *testing.B) {
 	slice := ints[0:10]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		tournamentTwo(slice...)
 	}
 }
-func Benchmark_tournamentTwo100(t *testing.B) {
+func Benchmark_tournamentTwo_100(t *testing.B) {
 	slice := ints[0:100]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		tournamentTwo(slice...)
 	}
 }
-func Benchmark_tournamentTwo1K(t *testing.B) {
+func Benchmark_tournamentTwo_1K(t *testing.B) {
 	slice := ints[0:1000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		tournamentTwo(slice...)
 	}
 }
-func Benchmark_tournamentTwo10K(t *testing.B) {
+func Benchmark_tournamentTwo_10K(t *testing.B) {
 	slice := ints[0:10000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		tournamentTwo(slice...)
 	}
 }
-func Benchmark_tournamentTwo100K(t *testing.B) {
+func Benchmark_tournamentTwo_100K(t *testing.B) {
 	slice := ints[0:100000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		tournamentTwo(slice...)
 	}
 }
-func Benchmark_tournamentTwo1000K(t *testing.B) {
+func Benchmark_tournamentTwo_1000K(t *testing.B) {
 	slice := ints[0:1000000]
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
