@@ -3,16 +3,20 @@ package main
 import (
 	"fmt"
 	"hash/fnv"
-	"log"
 )
 
-type Bucket struct {
-	key   string
+/*
+Separate chaining implementation w/ linked lists.
+*/
+
+type LinkedBucket struct {
+	key string
 	value int
+	// next int
 }
 
 type Hashtable struct {
-	table map[int]Bucket
+	table map[int][]LinkedBucket
 	size  int
 	entry int
 }
@@ -20,7 +24,7 @@ type Hashtable struct {
 func NewHashtable(numObjects int) *Hashtable {
 	return &Hashtable{
 
-		table: make(map[int]Bucket, numObjects),
+		table: make(map[int][]LinkedBucket, numObjects),
 		size:  numObjects,
 		entry: 0,
 	}
@@ -28,11 +32,13 @@ func NewHashtable(numObjects int) *Hashtable {
 
 func (h *Hashtable) get(k string) int {
 	hashCode := hash(k) % h.size
-	for _, bucket := range h.table {
+
+	table := h.table[hashCode]
+
+	for _, bucket := range table {
 		if bucket.key == k {
 			return bucket.value
 		}
-		hashCode = (hashCode + 1) % h.size
 	}
 
 	return 0
@@ -41,19 +47,20 @@ func (h *Hashtable) get(k string) int {
 func (h *Hashtable) put(k string, v int) {
 	hashCode := hash(k) % h.size
 
-	for _, bucket := range h.table {
+	if len(h.table[hashCode]) < 1 {
+		h.table[hashCode] = make([]LinkedBucket, h.size)
+	}
+
+	table := h.table[hashCode]
+
+	for _, bucket := range table {
 		if bucket.key == k {
 			bucket.value = v
 			return
 		}
-		hashCode = (hashCode + 1) % h.size
 	}
 
-	if h.entry >= h.size-1 {
-		log.Fatalln("table is full")
-	}
-
-	h.table[hashCode] = Bucket{key: k, value: v}
+	h.table[hashCode][h.entry] = LinkedBucket{key: k, value: v}
 	h.entry++
 }
 

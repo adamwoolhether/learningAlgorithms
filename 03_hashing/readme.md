@@ -19,5 +19,14 @@ _Open addressing_ resolves hash collisions by _probing_ through other locations 
 collision. There are a few approaches. _Linear probing_ incrementally checks higher index positions for the next available empty bucket, and starts at
 position 0 if the end is reached.
 
-This only succeeds when we ensure that there is always one empty bucket.
+This only succeeds when we ensure that there is always one empty bucket, and can be inefficient if the incorrect amount is used.
 
+#### Linked Lists
+Linked lists store data in memory fragments called _nodes_ that are linked together. Allowing us to follow _links_, or 
+_references_ *from the first node to the next node. This allows is to conduct the following operations:
+* Prepending a value
+* Appending a value
+* Inserting a value
+* Deleting a value
+
+_Separate chaining_ uses linked lists.
