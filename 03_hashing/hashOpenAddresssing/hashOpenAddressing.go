@@ -48,21 +48,44 @@ func (h *Hashtable) put(k string, v int) {
 		return
 	}
 
-	for i, entry := range h.table {
-		if entry.key == k {
-			entry.value = v
+	for h.table[hashCode].key != "" {
+		if h.table[hashCode].key == k {
+			h.table[hashCode] = Entry{key: k, value: v}
 			return
 		}
-
-		hashCode = i+1
+		hashCode++
 	}
 
-	if h.num >= h.max-1 {
+	if h.num > h.max-1 {
 		log.Fatal("table is full")
 	}
 
 	h.table[hashCode] = Entry{key: k, value: v}
 	h.num++
+}
+
+func (h *Hashtable) remove(k string) {
+	hashCode := hash(k) % h.max
+
+	entry, ok := h.table[hashCode]
+	if !ok {
+		return
+	}
+
+	if entry.key == k {
+		delete(h.table, hashCode)
+		h.num--
+		return
+	}
+
+	for h.table[hashCode].key != "" {
+		if h.table[hashCode].key == k {
+			delete(h.table, hashCode)
+			h.num--
+			return
+		}
+		hashCode++
+	}
 }
 
 func hash(s string) int {
@@ -72,15 +95,42 @@ func hash(s string) int {
 }
 
 func main() {
-	table := NewHashtable(3)
+	table := NewHashtable(12)
 
-
+	table.put("January", 31)
+	fmt.Println(table)
+	table.put("February", 28)
+	fmt.Println(table)
+	table.put("March", 31)
+	fmt.Println(table)
 	table.put("April", 30)
+	fmt.Println(table)
 	table.put("May", 31)
+	fmt.Println(table)
+	table.put("June", 30)
+	fmt.Println(table)
+	table.put("July", 31)
+	fmt.Println(table)
+	table.put("August", 31)
+	fmt.Println(table)
 	table.put("September", 30)
-
+	fmt.Println(table)
+	table.put("October", 31)
+	fmt.Println(table)
+	table.put("November", 30)
+	fmt.Println(table)
+	table.put("December", 31)
 	fmt.Println(table)
 
 	fmt.Println(table.get("August"))
 	fmt.Println(table.get("September"))
+	fmt.Println(table.get("October"))
+	fmt.Println(table.get("April"))
+	fmt.Println(table.get("May"))
+	fmt.Println(table)
+
+	table.remove("April")
+	table.remove("June")
+	table.remove("March")
+	fmt.Println(table)
 }
