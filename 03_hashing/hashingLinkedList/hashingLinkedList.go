@@ -25,6 +25,7 @@ func NewHashtable(numObjects int) *Hashtable {
 
 		table: make(map[int][]linkedEntry, numObjects),
 		max:   numObjects,
+		num: 0,
 	}
 }
 
@@ -45,10 +46,13 @@ func (h *Hashtable) get(k string) int {
 func (h *Hashtable) put(k string, v int) {
 	hashCode := hash(k) % h.max
 
+	fmt.Println(k, hashCode)
+
 	entry, ok := h.table[hashCode]
 	if !ok {
 		h.table[hashCode] = make([]linkedEntry, 1, h.max)
-		h.table[hashCode][h.num] = linkedEntry{key: k, value: v}
+		h.table[hashCode][0] = linkedEntry{key: k, value: v}
+		h.num++
 		return
 	}
 
@@ -60,6 +64,31 @@ func (h *Hashtable) put(k string, v int) {
 	}
 
 	h.table[hashCode] = append([]linkedEntry{{key: k, value: v}}, h.table[hashCode]...)
+	// h.num++
+}
+
+func (h *Hashtable) remove(k string) {
+	hashCode := hash(k) % h.max
+
+	fmt.Println(k, hashCode)
+
+	entry, ok := h.table[hashCode]
+	if !ok {
+		fmt.Println("not found")
+	}
+
+	if len(entry) <2 {
+		delete(h.table, hashCode)
+		h.num--
+		return
+	}
+
+	for i, bucket := range entry {
+		if bucket.key == k {
+			h.table[hashCode] = append(h.table[hashCode][:i], h.table[hashCode][i+1:]...)
+			return
+		}
+	}
 }
 
 func hash(s string) int {
@@ -68,9 +97,8 @@ func hash(s string) int {
 	return int(h.Sum32())
 }
 
-
 func main() {
-	table := NewHashtable(10)
+	table := NewHashtable(5)
 
 	table.put("April", 30)
 	table.put("May", 31)
@@ -83,4 +111,6 @@ func main() {
 	fmt.Println(table.get("RANDY"))
 	fmt.Println(table)
 
+	table.remove("May")
+	fmt.Println(table)
 }
