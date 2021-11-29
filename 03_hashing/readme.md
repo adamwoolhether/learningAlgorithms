@@ -30,3 +30,15 @@ _references_ *from the first node to the next node. This allows is to conduct th
 * Deleting a value
 
 _Separate chaining_ uses linked lists.
+
+### Evaluation
+The linked list implementation can grow as large as needed, limited only by memory. For open addressing, N must be smaller
+than the given max.
+
+For storage, open addressing requires storage proportional to M and N. It is `O(M)` because N < M.
+Storage for separate chaining is O(M+N).
+
+The key metric for runtime performance is the number of times an entry is inspected. The worse case of `get()` is `O(N)`.
+
+In hashtables, the **load factor**, `N/M` determines its performance. Load factor is also the _alpha_.
+Hashtables become increasingly inefficient when the load factor is higher than 0.75
