@@ -58,11 +58,11 @@ func (h *Hashtable) put(k string, v int) {
 	entry, ok := h.table[hashCode]
 	if !ok {
 		h.table[hashCode] = &linkedEntry{key: k, value: v, next: nil}
-		h.num++
-		return
+	} else {
+		h.table[hashCode] = &linkedEntry{key: k, value: v, next: entry}
 	}
 
-	h.table[hashCode] = &linkedEntry{key: k, value: v, next: entry}
+	h.num++
 }
 
 func (h *Hashtable) remove(k string) {
@@ -76,10 +76,10 @@ func (h *Hashtable) remove(k string) {
 	if entry.key == k {
 		if entry.next == nil {
 			delete(h.table, hashCode)
-			h.num--
-			return
+		} else {
+			h.table[hashCode] = entry.next
 		}
-		h.table[hashCode] = entry.next
+		h.num--
 		return
 	}
 
@@ -87,13 +87,25 @@ func (h *Hashtable) remove(k string) {
 		if entry.next.key == k {
 			if entry.next.next != nil {
 				h.table[hashCode].next = entry.next.next
-				return
+			} else {
+				h.table[hashCode].next = &linkedEntry{}
 			}
-			h.table[hashCode].next = &linkedEntry{}
+			h.num--
 			return
 		}
 		entry = entry.next
 	}
+}
+
+func (h *Hashtable) iterate() {
+	for _, entry := range h.table {
+			fmt.Printf("%s %d, ", entry.key, entry.value)
+			for node := entry.next; node != nil; {
+				fmt.Printf("%s %d ", node.key, node.value)
+				node = node.next
+			}
+	}
+	fmt.Println()
 }
 
 func hash(s string) int {
@@ -124,6 +136,7 @@ func main() {
 	fmt.Println(table.get("April"))
 	fmt.Println(table.get("May"))
 	fmt.Println(table)
+	table.iterate()
 
 	table.remove("October")
 	table.remove("May")
@@ -133,4 +146,6 @@ func main() {
 	fmt.Println(table.get("September"))
 	fmt.Println(table.get("October"))
 	fmt.Println(table)
+
+	table.iterate()
 }

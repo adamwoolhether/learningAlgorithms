@@ -88,6 +88,13 @@ func (h *Hashtable) remove(k string) {
 	}
 }
 
+func (h *Hashtable) iterate() {
+	for _, entry := range h.table {
+		fmt.Printf("%s %d ", entry.key, entry.value)
+	}
+	fmt.Println()
+}
+
 func hash(s string) int {
 	h := fnv.New32()
 	h.Write([]byte(s))
@@ -95,7 +102,7 @@ func hash(s string) int {
 }
 
 func main() {
-	table := NewHashtable(12)
+	table := NewHashtable(100)
 
 	table.put("January", 31)
 	fmt.Println(table)
@@ -128,9 +135,12 @@ func main() {
 	fmt.Println(table.get("April"))
 	fmt.Println(table.get("May"))
 	fmt.Println(table)
+	table.iterate()
 
 	table.remove("April")
 	table.remove("June")
 	table.remove("March")
 	fmt.Println(table)
+
+	table.iterate()
 }

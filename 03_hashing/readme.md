@@ -42,3 +42,16 @@ The key metric for runtime performance is the number of times an entry is inspec
 
 In hashtables, the **load factor**, `N/M` determines its performance. Load factor is also the _alpha_.
 Hashtables become increasingly inefficient when the load factor is higher than 0.75
+
+### Dynamic Hashtables
+_Geometric resizing_ is when we simply double the size of the storage array. Doing so properly, to avoid losing keys, 
+requires first creating a temporary hashtable with twice the original storage and rehashing all the entries into the new
+table.
+
+Geometric resizing ensures that resizing occurs much less frequently as the table grows in size.
+
+#### Performance of Dynamic Hashtables
+If the worst case, `put()` and `get()` are `O(N)`. Because N < M, N/M is a constant, `O(1)`, and is independent of N.
+
+## Perfect Hashing
+A perfect hash is an optimal hash table where each hash code is a unique index location.
