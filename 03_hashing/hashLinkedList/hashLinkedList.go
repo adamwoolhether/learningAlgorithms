@@ -88,7 +88,7 @@ func (h *Hashtable) remove(k string) {
 			if entry.next.next != nil {
 				h.table[hashCode].next = entry.next.next
 			} else {
-				h.table[hashCode].next = &linkedEntry{}
+				h.table[hashCode].next = nil
 			}
 			h.num--
 			return
@@ -115,7 +115,7 @@ func hash(s string) int {
 }
 
 func main() {
-	table := NewHashtable(10)
+	table := NewHashtable(12)
 
 	table.put("January", 31)
 	table.put("February", 28)
