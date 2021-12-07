@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 /*
 enqueue() is O(log N)
@@ -80,7 +83,7 @@ func (pq *PriorityQueue) sink(parent int) {
 	for 2*parent <= pq.number {
 		child := 2 * parent
 		if child < pq.number && pq.less(child, child+1) {
-			child += 1
+			child++
 		}
 		if !pq.less(parent, child) {
 			break
@@ -91,5 +94,39 @@ func (pq *PriorityQueue) sink(parent int) {
 }
 
 func main() {
+	pq := NewPQ(9)
+	fmt.Println(pq)
 
+	build := []Entry{
+		{value: "mark", priority: 22},
+		{value: "joey", priority: 63},
+		{value: "sam", priority: 8},
+		{value: "ron", priority: 12},
+		{value: "jon", priority: 45},
+		{value: "jake", priority: 3},
+		{value: "tom", priority: 98},
+		{value: "mike", priority: 27},
+		{value: "ray", priority: 41},
+	}
+
+	for _, v := range build {
+		pq.enqueue(v.value, v.priority)
+	}
+	fmt.Println(pq)
+
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq.dequeue())
+	fmt.Println(pq)
+
+	for _, v := range build {
+		pq.enqueue(v.value, v.priority)
+	}
+	pq.enqueue("fail", 10)
 }
