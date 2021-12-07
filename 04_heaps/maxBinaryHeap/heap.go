@@ -58,13 +58,6 @@ func (pq *PriorityQueue) enqueue(v interface{}, p int) {
 	pq.swim(pq.number)
 }
 
-func (pq *PriorityQueue) swim(child int) {
-	for child > 1 && pq.less(child/2, child) {
-		pq.swap(child, child/2)
-		child /= 2
-	}
-}
-
 func (pq *PriorityQueue) dequeue() interface{} {
 	if pq.number == 0 {
 		log.Fatalln("PriorityQueue is empty")
@@ -79,6 +72,13 @@ func (pq *PriorityQueue) dequeue() interface{} {
 	return max.value
 }
 
+func (pq *PriorityQueue) swim(child int) {
+	for child > 1 && pq.less(child/2, child) {
+		pq.swap(child, child/2)
+		child /= 2
+	}
+}
+
 func (pq *PriorityQueue) sink(parent int) {
 	for 2*parent <= pq.number {
 		child := 2 * parent
@@ -91,6 +91,14 @@ func (pq *PriorityQueue) sink(parent int) {
 		pq.swap(child, parent)
 		parent = child
 	}
+}
+
+func (pq *PriorityQueue) peek() Entry {
+	if pq.number == 0 {
+		log.Fatalln("PriorityQueue is empty")
+	}
+
+	return pq.storage[1]
 }
 
 func main() {
@@ -113,7 +121,7 @@ func main() {
 		pq.enqueue(v.value, v.priority)
 	}
 	fmt.Println(pq)
-
+	fmt.Println(pq.peek())
 	fmt.Println(pq.dequeue())
 	fmt.Println(pq.dequeue())
 	fmt.Println(pq.dequeue())
