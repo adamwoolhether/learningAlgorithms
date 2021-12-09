@@ -34,7 +34,7 @@ func main() {
 	// fmt.Printf("linearMedianSorted: %d of array: %v", linearSortRes, array)
 
 	array2 := []int{4, 76, 3, 223, 9, 0, 69, 98, 3, 62}
-	array2Largest, _, _ :=largest(array2...)
+	array2Largest, _, _ := largest(array2...)
 	countingSort(array2, array2Largest)
 	fmt.Printf("countingSort: %v", array2)
 
