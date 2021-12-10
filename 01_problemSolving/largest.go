@@ -5,7 +5,7 @@ import (
 )
 
 // Our largest func differs slight from the book.
-// We also return the max number's index, because removing an value from a slice
+// We also return the max number's index, because removing a value from a slice
 // in go requires knowing the index position. We use this later in doubleTwo
 func largest(a ...int) (int, int, error) {
 	if len(a) == 0 {
