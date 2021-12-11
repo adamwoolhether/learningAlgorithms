@@ -23,3 +23,9 @@ Recursively, this is: `F(n) = F(n-1) + F(n-2)`.
 The **Factorial** of a number `N` are the product of all positive integers less than or equal to N. Written as `N!`. Ex:
 `5! = 5 x 4 x 3 x 2 x 1 = 120`.  
 This can also be represented as `N! = N x (N - 1)!`. example: `120 = 5x 4 !`.
+
+### Merge Sort
+An in-place recursive algorithm. Requires extra storage, but gives `O(N log N` speed. It divides a given array in two,
+and merges them _in place_. Visual example:
+![](mergeSort.gif)  
+First allocate the required extra storage to place the values, for efficiency.
