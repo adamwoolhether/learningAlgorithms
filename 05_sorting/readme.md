@@ -29,3 +29,10 @@ An in-place recursive algorithm. Requires extra storage, but gives `O(N log N` s
 and merges them _in place_. Visual example:
 ![](mergeSort.gif)  
 First allocate the required extra storage to place the values, for efficiency.
+
+### Quicksort
+Recusively sorts an array by using a element in the array as a pivot value `p`, and inserts `p` into its proper location
+in the sorted array. It rearranges the array's contents so there is a sub array with the values that are `<= p`, and a right
+subarray with values that are `>= p`.  
+It depends on a partitioning function.. If the array given to quicksort is already sorted, the performance
+degrades to `O(N2)`. It's a common practice to use a random number to get the pivot index value.
