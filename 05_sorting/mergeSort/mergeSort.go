@@ -10,7 +10,7 @@ func mergeSort(a []int) {
 
 		left, right := low, mid+1
 
-		for i := low; i < high; i++ {
+		for i := low; i < high+1; i++ {
 			switch {
 			case left > mid:
 				a[i] = aux[right]
