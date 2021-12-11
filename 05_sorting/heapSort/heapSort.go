@@ -51,7 +51,6 @@ func (h *Heap) swap(i, j int) {
 }
 
 func main() {
-
 	newHeap := NewHeap([]int{4, 76, 3, 223, 90, 69, 98, 75, 62})
 	fmt.Println(newHeap.array)
 	newHeap.sort()
