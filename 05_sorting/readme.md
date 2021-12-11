@@ -36,3 +36,12 @@ in the sorted array. It rearranges the array's contents so there is a sub array 
 subarray with values that are `>= p`.  
 It depends on a partitioning function.. If the array given to quicksort is already sorted, the performance
 degrades to `O(N2)`. It's a common practice to use a random number to get the pivot index value.
+
+### Heap Sort
+Why is a heap sort useful to sort an array? When the max value is dequeued, the last index position is now unused, and 
+that's the index position that should contain the max value of the sorted array, so the dequeued value can be placed there.  
+![](heapSort.gif)
+Our heap implementations in this book don't use the 0 index position (to simplify the computations, remember?), Also, the heap
+is initially empty, so we need a way to "bulk upload" all the values instead of one by one.
+To address this, in our implementation, the `less(i,j)` and `swap(i,j)` functions will subtract 1 from i and j, when accessing
+`a[i]` or `a[j]`, allowing us 1-based indexing to work with 0-based storage.
