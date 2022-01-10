@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // base26 will convert a string into its
 // integer ASCII representation.
@@ -15,4 +18,14 @@ func base26(w string) int {
 	return val
 }
 
+func main() {
+	January := base26("January")
 
+	Canada := base26("Canada")
+
+	Mike := base26("Mike")
+
+	fmt.Println(January)
+	fmt.Println(Canada)
+	fmt.Println(Mike)
+}

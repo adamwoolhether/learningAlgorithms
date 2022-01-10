@@ -22,6 +22,9 @@ type Hashtable struct {
 }
 
 func NewHashtable(numObjects int) *Hashtable {
+	if numObjects < 1 {
+		panic("hashtable size must be > 0")
+	}
 	return &Hashtable{
 
 		table: make(map[int]*linkedEntry, numObjects),
@@ -99,11 +102,11 @@ func (h *Hashtable) remove(k string) {
 
 func (h *Hashtable) iterate() {
 	for _, entry := range h.table {
-			fmt.Printf("%s %d, ", entry.key, entry.value)
-			for node := entry.next; node != nil; {
-				fmt.Printf("%s %d ", node.key, node.value)
-				node = node.next
-			}
+		fmt.Printf("%s %d, ", entry.key, entry.value)
+		for node := entry.next; node != nil; {
+			fmt.Printf("%s %d ", node.key, node.value)
+			node = node.next
+		}
 	}
 	fmt.Println()
 }
@@ -115,37 +118,38 @@ func hash(s string) int {
 }
 
 func main() {
-	table := NewHashtable(12)
-
-	table.put("January", 31)
-	table.put("February", 28)
-	table.put("March", 31)
-	table.put("April", 30)
-	table.put("May", 31)
-	table.put("June", 30)
-	table.put("July", 31)
-	table.put("August", 31)
-	table.put("September", 30)
-	table.put("October", 31)
-	table.put("November", 30)
-	table.put("December", 31)
-
-	fmt.Println(table.get("August"))
-	fmt.Println(table.get("September"))
-	fmt.Println(table.get("October"))
-	fmt.Println(table.get("April"))
-	fmt.Println(table.get("May"))
+	table := NewHashtable(-100)
 	fmt.Println(table)
-	table.iterate()
-
-	table.remove("October")
-	table.remove("May")
-	table.remove("September")
-
-	fmt.Println(table.get("May"))
-	fmt.Println(table.get("September"))
-	fmt.Println(table.get("October"))
-	fmt.Println(table)
-
-	table.iterate()
+	//
+	// table.put("January", 31)
+	// table.put("February", 28)
+	// table.put("March", 31)
+	// table.put("April", 30)
+	// table.put("May", 31)
+	// table.put("June", 30)
+	// table.put("July", 31)
+	// table.put("August", 31)
+	// table.put("September", 30)
+	// table.put("October", 31)
+	// table.put("November", 30)
+	// table.put("December", 31)
+	//
+	// fmt.Println(table.get("August"))
+	// fmt.Println(table.get("September"))
+	// fmt.Println(table.get("October"))
+	// fmt.Println(table.get("April"))
+	// fmt.Println(table.get("May"))
+	// fmt.Println(table)
+	// table.iterate()
+	//
+	// table.remove("October")
+	// table.remove("May")
+	// table.remove("September")
+	//
+	// fmt.Println(table.get("May"))
+	// fmt.Println(table.get("September"))
+	// fmt.Println(table.get("October"))
+	// fmt.Println(table)
+	//
+	// table.iterate()
 }
