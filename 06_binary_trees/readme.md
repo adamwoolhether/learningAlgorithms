@@ -101,3 +101,15 @@ remove is `O(log N)`.
 We can also use this structure to store key-value pairings, similar to chapter three. Replease the insert() and contains()
 functions with put() and get().
 It should be noted, however, that this is far less performant than the hash table implementations.
+
+## Using Binary Trees as a Priority Queue
+Two benefits to used a binary search tree as a priority queue:
+* The structure is dynamic(array-based must first allocate the storage in advance)
+* We can iteraate over entries in priority order _without_ dequeing the values.
+
+The `priority` field will be used to locate nodes within the tree. In max binary heap, the highest priority queue can be
+located in `O(1)` constant time, because its at the first index. Using binary trees, the top priority node is at the 
+most-right node, giving it a runtime of `O(log N` if tree is balanced.
+
+When using binary trees for storage, the only value to remove is the one with the highest priority, done with our 
+`_removeMax()` func.
