@@ -68,3 +68,36 @@ subtree) is -1, 0, or 1.
 Each node stores its height, and inserting a node means the nodes of the affected nodes are computed to ensure that an
 unbalanced tree is detected immediately.
 
+After we implement our `computeHeight` and `heightDifference` methods, we add a node with value `27` to the tree:
+
+![](add27ToAvlTree.gif)
+
+And as the recursive `_insert` unwinds, the additional height is added to the ancestors.
+
+_Node rotation_ is conducted when the tree detects an imblanace, which means the height difference exceeds a range of -1 - 1.
+
+Node rotation:  
+![](nodeRotation.gif)
+
+Here we can see that the node with a value of 30 breaks the balance that AVL trees promise, it's then conducts a
+_rotate right_ to balance itself.
+
+An tree with just three values has four possible unbalanced scenarios:
+* Left-left: Demonstrated above, where only a _rotate right_ is needed
+* Right-right: The mirror iamge of the above, needing only a _rotate left_
+* Left-right: Needs to be reblananced in two steps. First a _rotate left_ which results in a Left-left, and then a
+_rotate right_. This two step operation is also known as a _rotate right-left_.
+* Right-left: the mirror of Left-right. a _rotate right-left_ will rebalance the tree.
+
+* ![](scendarios.gif)
+
+These re-balance scenarios all have a corresponding helper function to maintain the AVL tree's balance.
+
+## Analyzing performance of Self-Balancing Trees
+The worse cas, in regards to rotation methods is `log (N) rotations`. Otherwise, performance for search, insert, and
+remove is `O(log N)`.
+
+## Using Binary Trees as (key, value) Symbol Table
+We can also use this structure to store key-value pairings, similar to chapter three. Replease the insert() and contains()
+functions with put() and get().
+It should be noted, however, that this is far less performant than the hash table implementations.

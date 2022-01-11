@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// Node defines the structure used to build a BinaryTree.
 type Node struct {
 	value int
 	left  *Node
@@ -12,10 +13,6 @@ type Node struct {
 
 type BinaryTree struct {
 	root *Node
-}
-
-func NewBinaryTree() BinaryTree {
-	return BinaryTree{}
 }
 
 // insert inserts a value into BinaryTree.
@@ -121,7 +118,8 @@ func (bt *BinaryTree) _inorder(node *Node) {
 }
 
 func main() {
-	bTree := NewBinaryTree()
+	// bTree := NewBinaryTree()
+	bTree := BinaryTree{}
 
 	A := []int{19, 14, 15, 53, 58, 3, 26}
 
